@@ -3,11 +3,10 @@ dictionary = ["below","down","go","going","horn","how","howdy","it","i","low","o
 def substrings(string, dictionary)
     
     found_words = Hash.new(0)
-
+    
     dictionary.each do |word| 
         if string.downcase.include?(word)
-            found_words[word] += 1
-            p found_words
+            found_words[word] += string.downcase.scan(/(?=#{word})/).count # add the occurences of word inside string to the hash
         end
     end
 
